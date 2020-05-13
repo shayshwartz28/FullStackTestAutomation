@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Environment>
+
+    <!--TimeOut -->
+    <TimeOut>5</TimeOut>
+
+    <!--Credentials - Grafana -->
+    <user>admin</user>
+    <password>admin</password>
+
+    <PlatformName>mobile</PlatformName>
+
+    <!--Web -->
+    <BrowserName>Chrome</BrowserName>
+    <url>https://demo.nopcommerce.com/</url>
+    <ImageRepo>./imageRepository/</ImageRepo>
+    <screenShotFormat>png</screenShotFormat>
+
+    <!--Mobile Details-->
+     Mortgage Calculator App
+    <UDID>RF8M81BH9MX</UDID>
+    <APP_PACKAGE>com.shivgadhia.android.ukMortgageCalc</APP_PACKAGE>
+    <APP_ACTIVITY>.MainActivity</APP_ACTIVITY>
+
+    <!-- Financial Calculator App -->
+    <UDID>RF8M81BH9MX</UDID>
+    <APP_PACKAGE>com.financial.calculator</APP_PACKAGE>
+    <APP_ACTIVITY>.FinancialCalculators</APP_ACTIVITY>
+
+    <!-- API -->
+    <url_api>http://localhost:3000/</url_api>
+
+    <!-- Electron -->
+    <ElectronDriverPath>./Drivers/electron.exe</ElectronDriverPath>
+    <ElectronAppPath>C:/Automation/electron-api-demos-windows/ElectronAPIDemos-win32-ia32/ElectronAPIDemos.exe</ElectronAppPath>
+
+    <!-- Desktop -->
+    <Calculator_App>Microsoft.WindowsCalculator_8wekyb3d8bbwe!App</Calculator_App>
+    <Appium_Server>http://127.0.0.1:4723</Appium_Server>
+
+    <!-- DB -->
+    <dbURL>jdbc:mysql://remotemysql.com:3306/dgnv80rsUP </dbURL>
+    <dbUser>dgnv80rsUP</dbUser>
+    <dbPassword>pfRWHHdgWv</dbPassword>
+
+</Environment>
