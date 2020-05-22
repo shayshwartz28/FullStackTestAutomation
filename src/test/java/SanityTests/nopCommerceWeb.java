@@ -14,7 +14,8 @@ public class nopCommerceWeb extends commonOps
     @Description("Test Description: Register to nopCommerce Web Application")
     public void test01_register()
     {
-        nopCommerceWebFlow.register("shay", "shosho", "28", "May", "1989", "kuku222@", "kuku2", "12345678", "1234578");
+        nopCommerceWebFlow.register("shay", "shosho", "28", "May", "1989", "kuku222@",
+                "kuku2", "12345678", "1234578");
         verifications.testInElementAssertTrueIsDisplayed(nopCommerceRegister.txt_User_Email_Register_Error);
     }
 
@@ -31,7 +32,8 @@ public class nopCommerceWeb extends commonOps
     public void test03_comparingCameras()
     {
         int expectedElementsInList = 3;
-        nopCommerceWebFlow.checkCamerasPriceBySort("Price: Low to High"); // YONI - Why if i switch between the two lines it doesn't work?
+
+        nopCommerceWebFlow.checkCamerasPriceBySort("Price: Low to High");
         verifications.numberOfElementsInList(nopCommerceCameraAndPhotoPage.txt_cameras_Prices, expectedElementsInList);
     }
 
@@ -40,6 +42,7 @@ public class nopCommerceWeb extends commonOps
     public void test04_verifyCamerasNameByOrder()
     {
         String [] expectedCamerasName = {"Apple iCam", "Nikon D5500 DSLR", "Leica T Mirrorless Digital Camera"};
+
         nopCommerceWebFlow.verifyCamerasName("Price: High to Low");
         verifications.testInElementVerifyListNamesToExpectedArrayNames(nopCommerceCameraAndPhotoPage.txt_cameras_Title, expectedCamerasName);
     }
@@ -49,36 +52,36 @@ public class nopCommerceWeb extends commonOps
     public void test05_validationOfAddingProductToShoppingCart()
     {
         nopCommerceWebFlow.validationOfShoppingCart("Price: High to Low");
-        verifications.testInElementAssertTrueIsDisplayed(nopCommerceValidationOfShoopingCart.msg_ProductAdded);
+        verifications.testInElementAssertTrueIsDisplayed(nopCommerceValidationOfShoppingCart.msg_ProductAdded);
     }
 
     @Test(priority = 5, description = "Test06: Verify Quantity and total Sum")
     @Description("Test Description: Add product to shoppingCart, change the Quantity and verify the total Sum")
-    public void test06_addNewItemAndVerifySumOfMoney()
+    public void test06_addNewItemAndVerifySumOfMoney() throws InterruptedException
     {
         String expectedValue = "$1,060.00";
         String expectedQuantity = "2";
+
         nopCommerceWebFlow.addItemAndVerifyTotalPrice("Price: High to Low");
         verifications.textInElementAssertEquals(nopCommerceAddNewItemAndVerifyTotalPrice.txt_Items_Total_Money, expectedValue);
         verifications.textInElementAssertEqualsAttribute(nopCommerceAddNewItemAndVerifyTotalPrice.txt_Items_Quantity, expectedQuantity);
     }
 
     @Test(priority = 6, description = "Test07: Validation of Maximum Rating")
-    @Description("Test Description: Check that the products Rating it not above Maximum that have been chosen")
+    @Description("Test Description: Check that the product Rating it not above Maximum that been chosen")
     public void test07_productRating()
     {
-        int maximumRating = 88; //The rating currently to 27/03/2020 is: 87
-        nopCommerceWebFlow.verifyRating(nopCommerceSearchPage.logo_Rating,"apple");
+        int maximumRating = 100; //The rating currently to 22/05/2020 is: 100
+
+        nopCommerceWebFlow.verifyRating(nopCommerceSearchPage.logo_Rating,"apple"); // The product is: "Apple MacBook Pro 13-inch"
         verifications.testInElementAssertRatingProduct(nopCommerceSearchPage.logo_Rating, maximumRating);
     }
 
-    @Test(priority = 7, description = "Test08: Verify images are the same")
-    @Description("Test Description: Verify camera image is the same")
-    public void test08_verifyImage() throws InterruptedException
+    @Test(priority = 7, description = "Test08: Verify images identical")
+    @Description("Test Description: Verify two images of cameras are identical")
+    public void test08_verifyImage()
     {
-        // <------------------> YONI - When i taking a picture its save only the name, how to change it to picture?<------------------>
-        nopCommerceWebFlow.validationOfShoppingCart("Price: High to Low");
-        Thread.sleep(6000);
-        verifications.visualElement(nopCommerceValidationOfShoopingCart.pic_CameraPhotoComparing, "CameraPictureVersion1.00");
+        nopCommerceWebFlow.stepIntoMainProductPageAndCompareImages("Price: High to Low");
+        verifications.visualElement(nopCommerceValidationOfShoppingCart.pic_Camera_Photo_Comparing, "NopCommerce_LeicaT_Photo_Version_1.00");
     }
 }
