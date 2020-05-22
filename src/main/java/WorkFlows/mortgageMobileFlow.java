@@ -9,7 +9,7 @@ import io.qameta.allure.Step;
 
 import java.util.List;
 
-public class mortgageMobileFlow extends commonOps
+public class mortgageMobileFlow extends commonOps 
 {
     @Step("Fill in form and Calculate Mortgage")
     public static void calculateMortgage(String amount, String term, String rate)
