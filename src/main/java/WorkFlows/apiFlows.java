@@ -19,7 +19,7 @@ public class apiFlows extends commonOps
     {
         requestParams.put("name", name);
         requestParams.put("email", email);
-        apiActions.post(requestParams, "/api/teams");
+        apiActions.post(requestParams, "/api/teams");   
     }
 
     @Step("Update team in Grafana")
