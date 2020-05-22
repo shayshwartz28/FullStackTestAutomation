@@ -13,7 +13,7 @@ public class visualTesting extends commonOps
         nopCommerceWebFlow.validationOfShoppingCart("Price: High to Low");
         helperMethods.takeElementScreenShot(nopCommerceValidationOfShoppingCart.pic_Camera_Photo_Comparing, "NopCommerce_LeicaT_Photo_Version_1.00");
     }
- 
+
     @Test(description = "Taking photo of the regular calculator logo")
     public void createScreenShotComparingTwoLogos()
     {

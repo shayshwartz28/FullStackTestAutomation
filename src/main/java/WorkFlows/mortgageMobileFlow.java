@@ -19,4 +19,4 @@ public class mortgageMobileFlow extends commonOps
         uiActions.updateText(mortgageMainPage.text_Rate, rate);
         uiActions.click(mortgageMainPage.btn_Calculate);
     }
-}
+} 
