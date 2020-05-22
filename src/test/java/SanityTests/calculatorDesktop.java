@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 @Listeners(Utilities.Listeners.class)
 public class calculatorDesktop extends commonOps
 {
-    // WinAppDriver running in the background is required in order to operate the test's
+    // WinAppDriver running in the background is required in order to execute the test's
 
     @Test(priority = 0, description = "Test01: Verify Addition Command")
     @Description("Test Description: Verify Addition Command in Calculator")

@@ -12,7 +12,7 @@ public class electronDemo extends commonOps
 {
     @Test(priority = 0, description = "Test01: Verify Screen Resolution")
     @Description("Test Description: Getting the Resolution from App and Verify it")
-    public void test01_getScreenInfo() throws InterruptedException
+    public void test01_getScreenInfo()
     {
         String expectedResolution = "Your screen is: 1920px x 1080px";
 

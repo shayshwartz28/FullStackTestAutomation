@@ -2,10 +2,12 @@ package WorkFlows;
 
 import Extensions.dbActions;
 import Extensions.uiActions;
+import Extensions.verifications;
 import Utilities.commonOps;
 import com.google.common.collect.Ordering;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Listeners;
@@ -20,11 +22,12 @@ import static org.testng.Assert.assertTrue;
 public class nopCommerceWebFlow extends commonOps
 {
     @Step("Register to nopCommerce website")
-    public static void register(String firstName, String lastName, String dayOfBirth , String monthOfBirth, String yearOfBirth, String Email, String companyName, String password, String confirmPassword)
+    public static void register(String firstName, String lastName, String dayOfBirth , String monthOfBirth, String yearOfBirth,
+                                String Email, String companyName, String password, String confirmPassword)
     {
         uiActions.click(nopCommerceRegister.Btn_Register);
         uiActions.click(nopCommerceRegister.btn_Radio_Btn);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("FirstName"))); // YONI - Why i cant use pageObject?
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("FirstName"))); //use "By.id" because known bug of selenium- problem to use PageObject
         uiActions.updateText(nopCommerceRegister.txt_First_Name, firstName);
         uiActions.updateText(nopCommerceRegister.txt_Last_Name, lastName);
         uiActions.click(nopCommerceRegister.scroll_Down_day_Of_Birth);
@@ -33,7 +36,7 @@ public class nopCommerceWebFlow extends commonOps
         uiActions.updateDropDown(nopCommerceRegister.scroll_Down_Month_Of_Birth, monthOfBirth);
         uiActions.click(nopCommerceRegister.scroll_Down_Year_Of_Birth);
         uiActions.updateDropDown(nopCommerceRegister.scroll_Down_Year_Of_Birth, yearOfBirth);
-        uiActions.updateText(nopCommerceRegister.txt_User_Email_Register, Email); //YONI - The website approve 'kuku@gmail  - its a problem
+        uiActions.updateText(nopCommerceRegister.txt_User_Email_Register, Email);
         uiActions.updateText(nopCommerceRegister.txt_Company_Name, companyName);
         uiActions.click(nopCommerceRegister.check_Box_Btn);
         uiActions.updateText(nopCommerceRegister.field_Password, password);
@@ -45,11 +48,7 @@ public class nopCommerceWebFlow extends commonOps
     public static void login(String user, String password) throws InterruptedException
     {
         uiActions.click(nopCommerceLogin.btn_primary_login);
-        Thread.sleep(500); // YONI - i didn't succeed to implement explicitly wait.......
-        //wait = new WebDriverWait(driver, 10);
-        //wait.until(ExpectedConditions.visibilityOf(nopCommerceLogin.txt_userEmail));
-        //wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("Email"))));
-
+        Thread.sleep(500);
         uiActions.updateText(nopCommerceLogin.txt_User_Email, user);
         uiActions.updateText(nopCommerceLogin.txt_User_Password, password);
         uiActions.click(nopCommerceLogin.btn_login);
@@ -61,7 +60,7 @@ public class nopCommerceWebFlow extends commonOps
         uiActions.click(nopCommerceLogin.btn_primary_login);
         List <String> cred = dbActions.getCredentials("SELECT user_name, Password FROM Credentials WHERE id='2'"); // If The ID=5 test will fail, With ID=2 test will succeed
 
-        Thread.sleep(500); // YONI - i didn't succeed to implement explicitly wait.......
+        Thread.sleep(500);
         uiActions.updateText(nopCommerceLogin.txt_User_Email, cred.get(0));
         uiActions.updateText(nopCommerceLogin.txt_User_Password, cred.get(1));
         uiActions.click(nopCommerceLogin.btn_login);
@@ -82,13 +81,8 @@ public class nopCommerceWebFlow extends commonOps
             newListDouble.add(Double.parseDouble(tempChangeToString.get(i)));
         }
 
-        //Collections.sort(newListDouble); // This line will sort the list - YONI - to keep or delete?
         boolean isSorted = Ordering.natural().isOrdered(newListDouble);
-        assertTrue(isSorted,"The List of the prices is not sort"); // YONI - there is a way to move it to nopCommercerWeb?
-        //for(int i = 0; i < newListDouble.size(); i++)
-        //{
-            //System.out.println(newListDouble.get(i));
-        //}
+        assertTrue(isSorted,"The List of the prices is NOT sort!");
     }
 
     @Step("Verify cameras name")
@@ -103,37 +97,36 @@ public class nopCommerceWebFlow extends commonOps
     {
         uiActions.mouseOverElements(nopCommerceHeaderMenu.top_Header_Menu_Link_Electronics, nopCommercesubListElectronics.subListlink_Camera_And_Photo);
         uiActions.updateDropDown(nopCommerceCameraAndPhotoPage.dropDown_Products_Order, order);
-        uiActions.click(nopCommerceValidationOfShoopingCart.btn_AddToCart);
-        uiActions.click(nopCommerceValidationOfShoopingCart.btn_ClosePopUp);
+        uiActions.click(nopCommerceValidationOfShoppingCart.btn_AddToCart);
+        uiActions.click(nopCommerceValidationOfShoppingCart.btn_ClosePopUp);
     }
 
     @Step("Add product and change the quantity and verify total price")
-    public static void addItemAndVerifyTotalPrice(String order)
+    public static void addItemAndVerifyTotalPrice(String order) throws InterruptedException
     {
         uiActions.mouseOverElements(nopCommerceHeaderMenu.top_Header_Menu_Link_Electronics, nopCommercesubListElectronics.subListlink_Camera_And_Photo);
         uiActions.updateDropDown(nopCommerceCameraAndPhotoPage.dropDown_Products_Order, order);
-        uiActions.click(nopCommerceValidationOfShoopingCart.btn_AddToCart);
-
-        //        YONI - This code is the mouse over i didn't succeed to operate
-//        wait.until(ExpectedConditions.elementToBeSelected(By.xpath("//div[@class='header-links']/ul/li[4]/a")));
-//        uiActions.mouseOverElements(nopCommerceValidationOfShoopingCart.btn_ShoppingCart, nopCommerceValidationOfShoopingCart.btn_mouseOverGoToCart);
-//        //Thread.sleep(2500);
-//        wait.until(ExpectedConditions.elementToBeSelected(By.xpath("//div[@class='mini-shopping-cart']/div[4]/input")));
-
-        uiActions.click(nopCommerceValidationOfShoopingCart.btn_GoToCart);
+        uiActions.click(nopCommerceValidationOfShoppingCart.btn_AddToCart);
+        uiActions.click(nopCommerceValidationOfShoppingCart.btn_GoToCart);
         nopCommerceAddNewItemAndVerifyTotalPrice.txt_Items_Quantity.clear();
+        Thread.sleep(2500);
         uiActions.updateText(nopCommerceAddNewItemAndVerifyTotalPrice.txt_Items_Quantity, "2");
         uiActions.click(nopCommerceAddNewItemAndVerifyTotalPrice.btn_Update_Shopping_Cart);
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className("product-subtotal"), "$1,060.00"));
-
-        //uiActions.click(nopCommerceValidationOfShoopingCart.btn_ShoppingCart);
     }
 
     @Step("Verify Maximum rating of products")
     public static void verifyRating(List <WebElement> elemList, String searchValue)
     {
-        //YONI - There is a way to send the result of the assert?
         uiActions.updateText(nopCommerceLowerHeader.field_Search_Box, searchValue);
         uiActions.click(nopCommerceLowerHeader.btn_Main_Search);
+    }
+
+    @Step("Verify two images are identical")
+    public static void stepIntoMainProductPageAndCompareImages(String order)
+    {
+        uiActions.mouseOverElements(nopCommerceHeaderMenu.top_Header_Menu_Link_Electronics, nopCommercesubListElectronics.subListlink_Camera_And_Photo);
+        uiActions.updateDropDown(nopCommerceCameraAndPhotoPage.dropDown_Products_Order, order);
+        uiActions.click(nopCommerceValidationOfShoppingCart.link_Leica_T_Page);
     }
 }

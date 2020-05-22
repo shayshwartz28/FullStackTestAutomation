@@ -1,9 +1,12 @@
 package WorkFlows;
 
 import Extensions.uiActions;
+import Extensions.verifications;
 import Utilities.commonOps;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.asserts.Assertion;
 
 import java.util.List;
 
@@ -24,22 +27,16 @@ public class financialCalculatorMobileFlow extends commonOps
         uiActions.updateText(financialCalculatorAppsPercentageApp.textField_Percentage_Change_Y,PercentChangeTo);
     }
 
-    @Step("Verify Input")
-    public static void verifyLayoutResult(String xPercentFromY, String xPercentFromYAmount) throws Exception
+    @Step("Verify Input and reset button")
+    public static void verifyLayoutResult(String xPercentFromY, String xPercentFromYAmount)
     {
         List <WebElement> layoutResult = financialCalculatorAppsPercentageApp.text_Value_Result_Layout;
-        System.out.println("The size of the list is: " + layoutResult.size() + " <-----------");
+        driver.navigate().back();
 
         uiActions.click(financialCalculatorAppsMainPage.icon_Percentage_Calculator);
         uiActions.updateText(financialCalculatorAppsPercentageApp.textField_X_PercentageFrom_Y,xPercentFromY);
         uiActions.updateText(financialCalculatorAppsPercentageApp.textField_X_PercentageFrom_Y_Amount,xPercentFromYAmount);
-
-        System.out.println("The size of the list is: " + layoutResult.size()+ " <-----------" );
-
         uiActions.click(financialCalculatorAppsPercentageApp.btn_Reset_X_Per_Of_Y);
-
-        //assertTrue(MenuItemLayoutHelper.LayoutResult.isEmpty(),"The List is empty --> no Element that show the Result after reset."); //YONI - Use here in assertion or in the Sanity??
-
-        System.out.println("The size of the list is: " + layoutResult.size() + " <-----------");
+        driver.navigate().back();
     }
 }

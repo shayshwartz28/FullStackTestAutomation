@@ -8,6 +8,6 @@ import java.util.List;
 
 public class searchPage
 {
-    @FindBy(how = How.XPATH, using = "//div[@class='rating']/div")
+    @FindBy(how = How.XPATH, using = "//div[@class='item-grid']/div[2]/div/div[2]/div/div/div")
     public List <WebElement> logo_Rating;
 }

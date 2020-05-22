@@ -23,6 +23,9 @@ public class percentageCalculatorApp
     @FindBy(how = How.ID, using = "valueResultLayout")
     public List <WebElement> text_Value_Result_Layout;
 
+    @FindBy(how = How.ID, using = "valueResultLayout")
+    public WebElement back_To_Main_Page;
+
     //--------------------------------------------------------------
 
     @FindBy(how = How.ID, using = "xValueInput")

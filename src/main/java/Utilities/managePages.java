@@ -1,7 +1,11 @@
 package Utilities;
 
+import PageObjects.Calculator.calculatorMainPage;
 import PageObjects.financialCalculator.appsMainPage;
 import PageObjects.nopCommerce.*;
+import PageObjects.Mortgage.*;
+import PageObjects.financialCalculator.*;
+import PageObjects.ElectronDemo.*;
 import org.openqa.selenium.support.PageFactory;
 
 public class managePages extends base
@@ -14,25 +18,25 @@ public class managePages extends base
         nopCommerceHeaderMenu = PageFactory.initElements(driver, headerMenu.class);
         nopCommercesubListElectronics = PageFactory.initElements(driver, subListElectronics.class);
         nopCommerceCameraAndPhotoPage = PageFactory.initElements(driver, cameraAndPhotoPage.class);
-        nopCommerceValidationOfShoopingCart = PageFactory.initElements(driver, validationOfShoppingCart.class);
+        nopCommerceValidationOfShoppingCart = PageFactory.initElements(driver, validationOfShoppingCart.class);
         nopCommerceUpperHeaderMenu = PageFactory.initElements(driver, upperHeaderMenu.class);
         nopCommerceAddNewItemAndVerifyTotalPrice = PageFactory.initElements(driver, addNewItemAndVerifyTotalPrice.class);
         nopCommerceLowerHeader = PageFactory.initElements(driver, lowerHeader.class);
         nopCommerceSearchPage = PageFactory.initElements(driver, searchPage.class);
 
         // --------{ Mobile objects - Mortgage calculator }--------
-        mortgageMainPage = PageFactory.initElements(driver, PageObjects.Mortgage.mainPage.class);
-        mortgageSavedRepaymentPage = PageFactory.initElements(driver, PageObjects.Mortgage.savedMonthlyRepaymentPage.class);
+        mortgageMainPage = PageFactory.initElements(driver, mainPage.class);
+        mortgageSavedRepaymentPage = PageFactory.initElements(driver, savedMonthlyRepaymentPage.class);
 
         // --------{ Mobile objects - Financial calculator }--------
-        financialCalculatorAppsMainPage = PageFactory.initElements(driver, PageObjects.financialCalculator.appsMainPage.class);
-        financialCalculatorAppsPercentageApp = PageFactory.initElements(driver, PageObjects.financialCalculator.percentageCalculatorApp.class);
+        financialCalculatorAppsMainPage = PageFactory.initElements(driver, appsMainPage.class);
+        financialCalculatorAppsPercentageApp = PageFactory.initElements(driver, percentageCalculatorApp.class);
 
         // --------{ Electron Application }--------
-        electronMain = PageFactory.initElements(driver, PageObjects.ElectronDemo.mainPage.class);
+        electronMain = PageFactory.initElements(driver, electronMainPage.class);
 
         // --------{ Desktop objects - Calculator }--------
-        calcMain = PageFactory.initElements(driver, PageObjects.Calculator.mainPage.class);
+        calcMain = PageFactory.initElements(driver, calculatorMainPage.class);
         currencyExchangeCalculator = PageFactory.initElements(driver, PageObjects.Calculator.currencyExchangeCalculator.class);
     }
 }

@@ -6,7 +6,6 @@ import org.openqa.selenium.support.How;
 
 public class subListElectronics
 {
-    //YONI-There is any other way to find the elements without xpath?
     @FindBy(how = How.XPATH, using = "//ul[@class='top-menu notmobile']/li[2]/ul/li/a[1]")
     public WebElement subListlink_Camera_And_Photo;
 

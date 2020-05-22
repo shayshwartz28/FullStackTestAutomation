@@ -15,14 +15,12 @@ public class apiActions extends commonOps
     public static Response get(String paramValues)
     {
         response = httpRequest.get(paramValues);
-        System.out.println(response.prettyPrint());
         return response;
     }
 
     @Step("Extract Value From JSON Format")
     public static String extractFromJSON(Response response, String path)
     {
-        //----- Source -----
         jp = response.jsonPath();
         return jp.get(path).toString();
     }
@@ -33,7 +31,6 @@ public class apiActions extends commonOps
         httpRequest.header("Content-Type", "application/json");
         httpRequest.body(params.toJSONString());
         response = httpRequest.post(resource);
-        System.out.println(response.prettyPrint());
     }
 
     @Step("Update Data In Server")
@@ -42,13 +39,11 @@ public class apiActions extends commonOps
         httpRequest.header("Content-Type", "application/json");
         httpRequest.body(params.toJSONString());
         response = httpRequest.put(resource);
-        System.out.println(response.prettyPrint());
     }
 
     @Step("Delete Data From Server")
     public static void deleteTeam(String id)
     {
         response = httpRequest.delete("/api/teams/" + id);
-        System.out.println(response.prettyPrint());
     }
 }

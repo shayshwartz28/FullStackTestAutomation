@@ -64,11 +64,9 @@ public class desktopCalculatorFlow extends commonOps
         uiActions.click(currencyExchangeCalculator.btn_Clear_Entry);
         uiActions.click(currencyExchangeCalculator.input_Input_Unit);
         uiActions.click(currencyExchangeCalculator.text_Japan_Yen_Coin);
-        uiActions.click(currencyExchangeCalculator.btn_One);
-        uiActions.click(currencyExchangeCalculator.btn_Zero);
+        uiActions.click(calcMain.btn_One);
+        uiActions.click(calcMain.btn_Zero);
         uiActions.click(currencyExchangeCalculator.input_OutPut_Unit);
         uiActions.click(currencyExchangeCalculator.text_Israel_Shekel_Coin);
-
-       //YONI -- How to do scroll down to USA DOllLAR? ClickablePoint: true | {x:2741 y:1022} for USA Dollar
     }
 }

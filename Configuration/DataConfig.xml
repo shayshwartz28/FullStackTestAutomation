@@ -8,7 +8,7 @@
     <user>admin</user>
     <password>admin</password>
 
-    <PlatformName>mobile</PlatformName>
+    <PlatformName>web</PlatformName>
 
     <!--Web -->
     <BrowserName>Chrome</BrowserName>
@@ -17,10 +17,10 @@
     <screenShotFormat>png</screenShotFormat>
 
     <!--Mobile Details-->
-     Mortgage Calculator App
-    <UDID>RF8M81BH9MX</UDID>
-    <APP_PACKAGE>com.shivgadhia.android.ukMortgageCalc</APP_PACKAGE>
-    <APP_ACTIVITY>.MainActivity</APP_ACTIVITY>
+<!--     Mortgage Calculator App-->
+<!--    <UDID>RF8M81BH9MX</UDID>-->
+<!--    <APP_PACKAGE>com.shivgadhia.android.ukMortgageCalc</APP_PACKAGE>-->
+<!--    <APP_ACTIVITY>.MainActivity</APP_ACTIVITY>-->
 
     <!-- Financial Calculator App -->
     <UDID>RF8M81BH9MX</UDID>

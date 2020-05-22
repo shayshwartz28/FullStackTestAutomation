@@ -5,7 +5,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.windows.WindowsDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.RestAssured;
-//import org.boon.core.Sys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -103,7 +102,6 @@ public class commonOps extends base
         dc.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, getData("APP_ACTIVITY"));
         try
         {
-            //MobileDriver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), dc);
             driver = new RemoteWebDriver(new URL(getData("Appium_Server") + "/wd/hub"), dc);
         }
         catch (Exception e)
@@ -148,7 +146,7 @@ public class commonOps extends base
     @Parameters({"PlatformName"})
     public void startSession()
     {
-        //Platform = PlatformName; // "String PlatformName" Should be received as parameter in this function- JENKINS
+        //Platform = PlatformName; // "String PlatformName" Should be received as parameter in this function- regarding JENKINS
 
         if(getData("PlatformName").equalsIgnoreCase("web"))
             initBrowser(getData("BrowserName"));
@@ -173,12 +171,6 @@ public class commonOps extends base
         {
             driver.get(getData("url"));
         }
-//        else if(getData("PlatformName").equalsIgnoreCase("desktop"))
-//        {
-//            driver.get(getData("Calculator_App"));
-//            //driver.get(getData("url"));
-//            //driver.navigate().refresh();
-//        }
     }
 
     @AfterClass
@@ -189,9 +181,5 @@ public class commonOps extends base
         {
             driver.quit();
         }
-//        else if(getData("PlatformName").equalsIgnoreCase("mobile"))
-//        {
-//            MobileDriver.quit();
-//        }
     }
 }

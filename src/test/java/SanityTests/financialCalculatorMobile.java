@@ -23,36 +23,22 @@ public class financialCalculatorMobile extends commonOps
     }
 
     @Test(priority = 1, description = "Test02: Check value result layout as disappeared ")
-    @Description("Test Description: Enter Percentage calculator app, put input, see the result layout, delete input and verify its disappeared")
-    public void test02_CheckLayoutDisappeared() throws Exception
+    @Description("Test Description: Enter Percentage calculator app, put input, see the result, delete result and verify its disappeared")
+    public void test02_CheckResultDisappeared()
     {
         int expectedElementsInList = 0;
         String xPerFromY = "10";
         String xPerFromYAmount = "100";
 
-        financialCalculatorMobileFlow.verifyLayoutResult(xPerFromY, xPerFromYAmount );
-        verifications.numberOfElementsInList(financialCalculatorAppsPercentageApp.text_Value_Result_Layout, expectedElementsInList);
-        //System.out.println(financialCalculatorAppsPercentageApp.btn_Reset_X_Per_Of_Y.getSize()); // Option to see the size of the list and verify the list is empty
+        financialCalculatorMobileFlow.verifyLayoutResult(xPerFromY, xPerFromYAmount);
+        verifications.verifyListIsEmpty(financialCalculatorAppsPercentageApp.text_Value_Result_Layout);
     }
 
-    @Test(priority = 2, description = "Test03: Verify two Logos are different")
-    @Description("Test Description: Compare pictures of two logos and verifies they different")
+    @Test(priority = 2, description = "Test03: Verify two Logos are identical")
+    @Description("Test Description: Compare pictures of two logos and verifies they identical")
     public void test03_comparingTwoLogos() throws Exception
     {
-//        verifications.visualElement(financialCalculatorAppsMainPage.icon_Miscellaneous_Calculation,
-//                "CameraPictureRegularCalculatorVersion1.00"); // This will activate the Assertion Error
-
         verifications.visualElement(financialCalculatorAppsMainPage.icon_Regular_Calculator,
-                "CameraPictureRegularCalculatorVersion1.00"); // This will --> NOT <-- activate the Assertion Error ------> The only one that works
-
-//        verifications.visualElement(financialCalculatorAppsMainPage.icon_Stock_Calculator,
-//                "CameraPictureCreditCardPayoffCalculator1.00");
-
-//        verifications.visualElement(financialCalculatorAppsMainPage.icon_Bond_Calculator,
-//                "CameraPictureBondCalculatorVersion1.00"); // This will --> NOT <-- activate the Assertion Error
-
-//        verifications.visualElement(financialCalculatorAppsMainPage.icon_Auto_Loan_Calculator,
-//                "CameraPictureBondCalculatorVersion1.00"); // This --> WILL <-- activate the Assertion Error
-
+                "FinancialCalculator_Regular_Calculator_Version_1.00"); // This will --> NOT <-- activate the Assertion Error
     }
 }

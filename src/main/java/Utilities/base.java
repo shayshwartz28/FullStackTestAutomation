@@ -1,6 +1,7 @@
 package Utilities;
 
-import PageObjects.financialCalculator.appsMainPage;
+import PageObjects.Calculator.calculatorMainPage;
+import PageObjects.ElectronDemo.electronMainPage;
 import PageObjects.nopCommerce.*;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -12,7 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.simple.JSONObject;
@@ -40,7 +40,7 @@ public class base
     public static headerMenu nopCommerceHeaderMenu;
     public static subListElectronics nopCommercesubListElectronics;
     public static cameraAndPhotoPage nopCommerceCameraAndPhotoPage;
-    public static validationOfShoppingCart nopCommerceValidationOfShoopingCart;
+    public static validationOfShoppingCart nopCommerceValidationOfShoppingCart;
     public static upperHeaderMenu nopCommerceUpperHeaderMenu;
     public static addNewItemAndVerifyTotalPrice nopCommerceAddNewItemAndVerifyTotalPrice;
     public static lowerHeader nopCommerceLowerHeader;
@@ -60,10 +60,10 @@ public class base
     public static JsonPath jp;
 
     //--------{ Electron Application }--------
-    public static PageObjects.ElectronDemo.mainPage electronMain;
+    public static electronMainPage electronMain;
 
     //--------{ Desktop Application }--------
-    public static PageObjects.Calculator.mainPage calcMain;
+    public static calculatorMainPage calcMain;
     public static PageObjects.Calculator.currencyExchangeCalculator currencyExchangeCalculator ;
 
     //--------{ configuration of Data Base - RemoteMySql}--------
