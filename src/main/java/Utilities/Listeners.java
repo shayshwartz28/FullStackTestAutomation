@@ -3,12 +3,11 @@ package Utilities;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class Listeners extends commonOps implements ITestListener
+public class Listeners extends CommonOps implements ITestListener
 {
     public void onStart(ITestContext execution)
     {

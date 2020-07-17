@@ -1,14 +1,14 @@
 package SanityTests;
 
-import Extensions.verifications;
-import Utilities.commonOps;
-import WorkFlows.electronFlow;
+import Extensions.Verifications;
+import Utilities.CommonOps;
+import WorkFlows.ElectronFlow;
 import io.qameta.allure.Description;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 @Listeners(Utilities.Listeners.class)
-public class electronDemo extends commonOps
+public class electronDemo extends CommonOps
 {
     @Test(priority = 0, description = "Test01: Verify Screen Resolution")
     @Description("Test Description: Getting the Resolution from App and Verify it")
@@ -16,7 +16,7 @@ public class electronDemo extends commonOps
     {
         String expectedResolution = "Your screen is: 1920px x 1080px";
 
-        electronFlow.getScreenInfo();
-        verifications.textInElementAssertEquals(electronMain.field_Screen_Info, expectedResolution);
+        ElectronFlow.getScreenInfo();
+        Verifications.textInElementAssertEquals(electronMain.field_Screen_Info, expectedResolution);
     }
 }
